@@ -36,11 +36,11 @@ class Lecturer(Mentor):
 
     def average_grades(self, grades_lecturer=None):
         rate_lst = list(grades_lecturer.values())
-        avg = sum(rate_lst) / len(rate_lst)
-        return avg
+        avg_grades = sum(rate_lst) / len(rate_lst)
+        return avg_grades
 
     def __str__(self):
-        some_lecturer = f"Имя: {self.name}'\n'Фамилия: {self.surname}'\n'Средняя оценка за лекции: {avg}"
+        some_lecturer = f"Имя: {self.name}'\n'Фамилия: {self.surname}'\n'Средняя оценка за лекции: {self.average_grades()}"
         return some_lecturer
 
 class Reviewer(Mentor):
