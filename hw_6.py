@@ -31,17 +31,21 @@ class Mentor:
 
 class Lecturer(Mentor):
     def rate_lecturer(self):
-        grades_lecturer = {}
-        return grades_lecturer
+        self.grades_lecturer = {}
+        return self.grades_lecturer
 
-    def average_grades(self, grades_lecturer=None):
-        rate_lst = list(grades_lecturer.values())
-        avg_grades = sum(rate_lst) / len(rate_lst)
-        return avg_grades
+    def average_grades(self):
+        rate_lst = list(self.grades_lecturer.values())
+        if len(rate_lst) == 0:
+            self.avg = 0
+        else:
+            self.avg = sum(rate_lst) / len(rate_lst)
+        return self.avg
 
     def __str__(self):
         some_lecturer = f"Имя: {self.name}'\n'Фамилия: {self.surname}'\n'Средняя оценка за лекции: {self.average_grades()}"
         return some_lecturer
+
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
@@ -57,14 +61,14 @@ class Reviewer(Mentor):
         some_reviewer = f"Имя: {self.name}'\n'Фамилия: {self.surname}"
         return some_reviewer
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
-
-cool_mentor = Mentor('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
-
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-
-print(best_student.grades)
+# best_student = Student('Ruoy', 'Eman', 'your_gender')
+# best_student.courses_in_progress += ['Python']
+#
+# cool_mentor = Mentor('Some', 'Buddy')
+# cool_mentor.courses_attached += ['Python']
+#
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+# cool_mentor.rate_hw(best_student, 'Python', 10)
+#
+# print(best_student.grades)
