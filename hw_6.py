@@ -1,3 +1,6 @@
+from audioop import avg
+
+
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -17,6 +20,8 @@ class Student:
             return 'Ошибка'
 
 
+
+
 class Mentor:
     def __init__(self, name, surname):
         self.name = name
@@ -25,8 +30,18 @@ class Mentor:
 
 
 class Lecturer(Mentor):
-    def __init__(self):
-        self.grades_lecturer = {}
+    def rate_lecturer(self):
+        grades_lecturer = {}
+        return grades_lecturer
+
+    def average_grades(self, grades_lecturer=None):
+        rate_lst = list(grades_lecturer.values())
+        avg = sum(rate_lst) / len(rate_lst)
+        return avg
+
+    def __str__(self):
+        some_lecturer = f"Имя: {self.name}'\n'Фамилия: {self.surname}'\n'Средняя оценка за лекции: {avg}"
+        return some_lecturer
 
 class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
@@ -37,6 +52,10 @@ class Reviewer(Mentor):
                 student.grades[course] = [grade]
         else:
             return 'Ошибка'
+
+    def __str__(self):
+        some_reviewer = f"Имя: {self.name}'\n'Фамилия: {self.surname}"
+        return some_reviewer
 
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
