@@ -44,9 +44,11 @@ class Mentor:
 
 
 class Lecturer(Mentor):
-    def rate_lecturer(self):
-        self.grades_lecturer = {}
-        return self.grades_lecturer
+    # тут не совсем понятно как действовать
+    grades_lecturer = {}
+    # def rate_lecturer(self):
+    #     self.grades_lecturer = {}
+    #     return self.grades_lecturer
 
     def average_grades(self):
         rate_lst = list(self.rate_lecturer().values())
