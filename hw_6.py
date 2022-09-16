@@ -89,7 +89,7 @@ class Reviewer(Mentor):
 student_1 = Student('Ivan', 'Ivanov', 'male')
 student_1.courses_in_progress.append('Python')
 student_1.finished_courses.append('JavaScript')
-student_1.rate_lecture(lecturer_2, 'Python', 10)
+student_1.rate_lecture(lecturer_2, 'Python', 10)# ошибка с лектором
 print(student_1)
 
 student_2 = Student('Irina', 'Petrova', 'female')
@@ -117,3 +117,4 @@ reviewer_2 = Reviewer('Vitalii', 'Volgin')
 reviewer_2.courses_attached.append('Python')
 reviewer_2.rate_hw(student_2, 'JavaScript', 9)
 print(reviewer_2)
+
