@@ -26,16 +26,21 @@ class Student:
             self.avg_student = sum(grades) / len(grades)
         return self.avg_student
 
-    # def all_students_rate(self):
-    #     all_students = []
-    #     for student in Student:
-    #         all_students.append(student)
-    #     for course in all_courses:
-    #         if len(all_students) == 0:
-    #             print(f'Средняя оценка на курсе {course}: 0')
-    #         else:
-    #             students_avg_rate = sum(all_students) / len(all_students)
-    #             print(f'Средняя оценка на курсе {course}: {students_avg_rate}')
+    def all_students_rate(self):
+        all_students = []
+        for student in Student:
+            all_students.append(student)
+        for cours in all_courses:
+            if cours in self.finished_courses:
+                rate_student = self.grades.values()
+                all_grades = []
+                for grade in rate_student:
+                    all_grades.append(grade)
+                    avg_all_students_rate = sum(all_grades) / len(all_grades)
+
+            print(f'Средний бал курса {cours}: {avg_all_students_rate}')
+
+
 
 
     def __lt__(self, other):
