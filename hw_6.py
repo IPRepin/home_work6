@@ -79,16 +79,6 @@ class Lecturer(Mentor):
             self.avg = sum(rate_lst) / len(rate_lst)
         return self.avg
 
-    # def all_lecturer_rate(self):
-    #     all_lecturer = []
-    #     for lecturer in Lecturer:
-    #         all_lecturer.append(student)
-    #     for course in all_courses:
-    #         if len(all_lecturer) == 0:
-    #             print(f'Средняя оценка лекторов на курсе {course}: 0')
-    #         else:
-    #             lecturer_avg_rate = sum(all_lecturer) / len(all_lecturer)
-    #             print(f'Средняя оценка лекторов на курсе {course}: {lecturer_avg_rate}')
 
     def __lt__(self, other):
         if not isinstance(other, Lecturer):
@@ -162,3 +152,29 @@ print(reviewer_2)
 print(reviewer_1)
 
 
+students_list = [student_1, student_2]
+students_grades_list = []
+def student_midgrades(student_list, course):
+    for student in student_list:
+        if course in student.grades.keys():
+            students_grades_list.extend(student.grades.values())
+    avg_sudent_grade = sum(students_grades_list) / len(students_grades_list)
+    print(f'Средний бал по всем студентам курса {course}: {avg_sudent_grade}')
+
+
+
+lecturer_list = [lecturer_1, lecturer_2]
+
+def lecturer_midgrades(lecturer_list, course):
+    lecturer_grades_list = []
+    for lecturer in lecturer_list:
+        if course in lecturer.courses_grades.keys():
+                lecturer_grades_list.extend(lecturer.courses_grades.values())
+    avg_lecturer_grade = sum(lecturer_grades_list) / len(lecturer_grades_list)
+    print(f'Средний бал по всем лекторам курса {course}: {avg_lecturer_grade}')
+
+
+
+
+student_midgrades(students_list, 'Python')
+lecturer_midgrades(lecturer_list, 'JavaScript')
