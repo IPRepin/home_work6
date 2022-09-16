@@ -42,12 +42,13 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = []
+        self.courses_grades = {}
 
 
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
-    courses_grades = {}
+
 
 
     def average_grades(self):
@@ -93,32 +94,36 @@ class Reviewer(Mentor):
 student_1 = Student('Ivan', 'Ivanov', 'male')
 student_1.courses_in_progress.append('Python')
 student_1.finished_courses.append('JavaScript')
-student_1.rate_lecture(lecturer_2, 'Python', 10)# ошибка с лектором
-print(student_1)
+
 
 student_2 = Student('Irina', 'Petrova', 'female')
 student_2.courses_in_progress.append('JavaScript')
 student_2.finished_courses.append('PHP')
-student_1.rate_lecture(lecturer_1, 'JavaScript', 10)
-print(student_2)
+
 
 lecturer_1 = Lecturer('Maxim', 'Sidorov')
 lecturer_1.courses_attached.append('JavaScript')
 lecturer_1.courses_attached.append('PHP')
-print(lecturer_1)
+
 
 lecturer_2 = Lecturer('Igor', 'Vasilev')
 lecturer_2.courses_attached.append('Python')
 lecturer_2.courses_attached.append('HTML')
-print(lecturer_2)
+
 
 reviewer_1 = Reviewer('Elena', 'Sidorenko')
 reviewer_1.courses_attached.append('Python')
-reviewer_1.rate_hw(student_1, 'Python', 8)
-print(reviewer_1)
+
 
 reviewer_2 = Reviewer('Vitalii', 'Volgin')
 reviewer_2.courses_attached.append('Python')
-reviewer_2.rate_hw(student_2, 'JavaScript', 9)
-print(reviewer_2)
 
+
+student_1.rate_lecture(lecturer_2, 'Python', 10)
+student_1.rate_lecture(lecturer_1, 'JavaScript', 10)
+reviewer_1.rate_hw(student_1, 'Python', 8)
+reviewer_2.rate_hw(student_2, 'JavaScript', 9)
+print(student_1)
+print(student_2)
+print(lecturer_1)
+print(lecturer_2)
