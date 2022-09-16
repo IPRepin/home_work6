@@ -45,7 +45,6 @@ class Mentor:
 
 
 class Lecturer(Mentor):
-    courses = []
     courses_grades = {}
 
 
@@ -90,11 +89,13 @@ class Reviewer(Mentor):
 student_1 = Student('Ivan', 'Ivanov', 'male')
 student_1.courses_in_progress.append('Python')
 student_1.finished_courses.append('JavaScript')
+student_1.rate_lecture(lecturer_2, 'Python', 10)
 print(student_1)
 
 student_2 = Student('Irina', 'Petrova', 'female')
 student_2.courses_in_progress.append('JavaScript')
 student_2.finished_courses.append('PHP')
+student_1.rate_lecture(lecturer_1, 'JavaScript', 10)
 print(student_2)
 
 lecturer_1 = Lecturer('Maxim', 'Sidorov')
