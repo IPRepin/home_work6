@@ -8,18 +8,21 @@ class Student:
         self.grades = {}
 
     def rate_lecture(self, lecturer, course, grade):
-        if isinstance(lecturer, Lecturer) and course in self.courses_in_progress and course in lecturer.courses:
+        if isinstance(lecturer, Lecturer) and course in self.courses_in_progress and course in lecturer.courses_attached:
             if course in lecturer.courses_grades:
                 lecturer.courses_grades[course] += [grade]
             else:
                 lecturer.courses_grades[course] = [grade]
 
     def average_grades_student(self):
-        rate_lst_student = list(self.grades.values())
-        if len(rate_lst_student) == 0:
+        rate_lst_student = self.grades.values()
+        grades = []
+        for grade in rate_lst_student:
+            grades.append(grade)
+        if len(grades) == 0:
             self.avg_student = 0
         else:
-            self.avg_student = sum(rate_lst_student) / len(rate_lst_student)
+            self.avg_student = sum(grades) / len(grades)
         return self.avg_student
 
     def __lt__(self, other):
@@ -42,12 +45,13 @@ class Mentor:
         self.name = name
         self.surname = surname
         self.courses_attached = []
-        self.courses_grades = {}
+
 
 
 class Lecturer(Mentor):
     def __init__(self, name, surname):
         super().__init__(name, surname)
+        self.courses_grades = {}
 
 
 
@@ -119,11 +123,13 @@ reviewer_2 = Reviewer('Vitalii', 'Volgin')
 reviewer_2.courses_attached.append('Python')
 
 
-student_1.rate_lecture(lecturer_2, 'Python', 10)
-student_1.rate_lecture(lecturer_1, 'JavaScript', 10)
-reviewer_1.rate_hw(student_1, 'Python', 8)
-reviewer_2.rate_hw(student_2, 'JavaScript', 9)
+# reviewer_2.rate_hw(student_1, 'Python', 10)
+# student_1.rate_lecture(lecturer_2, 'Python', 10)
+
+
 print(student_1)
 print(student_2)
-print(lecturer_1)
 print(lecturer_2)
+print(lecturer_1)
+print(reviewer_2)
+print(reviewer_1)
