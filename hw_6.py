@@ -1,3 +1,4 @@
+all_courses = ['JavaScript', 'PHP', 'Python', 'HTML']
 class Student:
     def __init__(self, name, surname, gender):
         self.name = name
@@ -25,6 +26,18 @@ class Student:
             self.avg_student = sum(grades) / len(grades)
         return self.avg_student
 
+    # def all_students_rate(self):
+    #     all_students = []
+    #     for student in Student:
+    #         all_students.append(student)
+    #     for course in all_courses:
+    #         if len(all_students) == 0:
+    #             print(f'Средняя оценка на курсе {course}: 0')
+    #         else:
+    #             students_avg_rate = sum(all_students) / len(all_students)
+    #             print(f'Средняя оценка на курсе {course}: {students_avg_rate}')
+
+
     def __lt__(self, other):
         if not isinstance(other, Student):
             print('Ошибка')
@@ -36,8 +49,6 @@ class Student:
         some_student = f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за домашние задания: {self.average_grades_student()}\n" \
                         f"Курсы в процессе изучения: {self.courses_in_progress}\nЗавершенные курсы: {self.finished_courses}"
         return some_student
-
-
 
 
 class Mentor:
@@ -134,4 +145,4 @@ print(lecturer_1)
 print(reviewer_2)
 print(reviewer_1)
 
-print(student_1 > student_2)
+
