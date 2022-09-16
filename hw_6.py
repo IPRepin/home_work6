@@ -74,6 +74,17 @@ class Lecturer(Mentor):
             self.avg = sum(rate_lst) / len(rate_lst)
         return self.avg
 
+    # def all_lecturer_rate(self):
+    #     all_lecturer = []
+    #     for lecturer in Lecturer:
+    #         all_lecturer.append(student)
+    #     for course in all_courses:
+    #         if len(all_lecturer) == 0:
+    #             print(f'Средняя оценка лекторов на курсе {course}: 0')
+    #         else:
+    #             lecturer_avg_rate = sum(all_lecturer) / len(all_lecturer)
+    #             print(f'Средняя оценка лекторов на курсе {course}: {lecturer_avg_rate}')
+
     def __lt__(self, other):
         if not isinstance(other, Lecturer):
             print('Ошибка')
