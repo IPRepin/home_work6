@@ -10,9 +10,9 @@ class Student:
     def rate_lecture(self, lecturer, course, grade):
         if isinstance(lecturer, Lecturer) and course in self.courses_in_progress and course in lecturer.courses_attached:
             if course in lecturer.courses_grades:
-                lecturer.courses_grades[course] += [grade]
+                lecturer.courses_grades[course] += grade
             else:
-                lecturer.courses_grades[course] = [grade]
+                lecturer.courses_grades[course] = grade
 
     def average_grades_student(self):
         rate_lst_student = self.grades.values()
@@ -29,7 +29,7 @@ class Student:
         if not isinstance(other, Student):
             print('Ошибка')
         else:
-            self.avg_student < other.avg_student
+            return self.avg_student < other.avg_student
 
 
     def __str__(self):
@@ -67,7 +67,7 @@ class Lecturer(Mentor):
         if not isinstance(other, Lecturer):
             print('Ошибка')
         else:
-            self.avg < other.avg
+            return self.avg < other.avg
 
     def __str__(self):
         some_lecturer = f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.average_grades()}"
@@ -81,9 +81,9 @@ class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
             if course in student.grades:
-                student.grades[course] += [grade]
+                student.grades[course] += grade
             else:
-                student.grades[course] = [grade]
+                student.grades[course] = grade
         else:
             return 'Ошибка'
 
@@ -116,16 +116,16 @@ lecturer_2.courses_attached.append('HTML')
 
 
 reviewer_1 = Reviewer('Elena', 'Sidorenko')
-reviewer_1.courses_attached.append('Python')
+reviewer_1.courses_attached.append('JavaScript')
 
 
 reviewer_2 = Reviewer('Vitalii', 'Volgin')
 reviewer_2.courses_attached.append('Python')
 
-
-# reviewer_2.rate_hw(student_1, 'Python', 10)
-# student_1.rate_lecture(lecturer_2, 'Python', 10)
-
+reviewer_1.rate_hw(student_2, 'JavaScript', 7)
+reviewer_2.rate_hw(student_1, 'Python', 8)
+student_1.rate_lecture(lecturer_2, 'Python', 10)
+student_2.rate_lecture(lecturer_1, 'JavaScript', 8)
 
 print(student_1)
 print(student_2)
@@ -133,3 +133,5 @@ print(lecturer_2)
 print(lecturer_1)
 print(reviewer_2)
 print(reviewer_1)
+
+print(student_1 > student_2)
